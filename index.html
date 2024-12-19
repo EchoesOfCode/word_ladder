@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Ladder Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+
+</head>
+<body>
+    <header>
+        <h1>Word Ladder Game</h1>
+        <p>Start at the bottom (HEAD) and climb to the top (TAIL)!</p>
+    </header>
+    <div id="hearts-container" class="hearts">
+        <!-- Hearts will be dynamically added here -->
+    </div>
+    
+    <main>
+        <!-- Ladder Container -->
+        <div class="ladder-background">
+            <div class="rung" id="rung-6">HEAD</div>
+            <div class="rung" id="rung-2"></div>
+            <div class="rung" id="rung-3"></div>
+            <div class="rung" id="rung-4"></div>
+            <div class="rung" id="rung-5"></div>
+            <div class="rung" id="rung-1">
+                TAIL
+                <!--<input type="text" id="next-word" placeholder="Enter your next word">
+                -<button onclick="submitWord()">Submit</button>-->
+            </div>
+        </div>
+
+        <!-- Modal Container -->
+      
+    <!-- How to Play Modal -->
+<!-- How to Play Modal -->
+<div id="how-to-play-modal" class="modal">
+    <div class="modal-content">
+        <span id="close-how-to-play" class="close-button">&times;</span>
+        <h2>How To Play</h2>
+        <h3>Climb the word ladder in 5 tries.</h3>
+        <ul>
+            <li>Each guess must be a valid <strong>4-letter word</strong>.</li>
+            <li>You can only change <strong>one letter</strong> from the previous word.</li>
+            <li>Correct words will move you up the ladder until you reach the final word.</li>
+        </ul>
+
+        <h3>Examples</h3>
+        <!-- Ladder Representation -->
+        <div class="ladder-modal">
+            <div class="rung-modal">
+                <div class="word-correct">TAIL</div>
+                <div class="rung-explanation">Reached th final word.</div>
+            </div>
+            <div class="rung-modal">
+                <div class="word-correct">TALL</div>
+                <div class="rung-explanation">Change the letter <strong>I</strong> to <strong>L</strong>.</div>
+            </div>
+            <div class="rung-modal">
+                <div class="word-correct">TELL</div>
+                <div class="rung-explanation">Change the letter <strong>A</strong> to <strong>E</strong>.</div>
+            </div>
+            <div class="rung-modal">
+                <div class="word-correct">TEAL</div>
+                <div class="rung-explanation">Change the letter <strong>L</strong> to <strong>A</strong>.</div>
+            </div>
+            <div class="rung-modal">
+                <div class="word-correct">HEAL</div>
+                <div class="rung-explanation">Start at the bottom word: <strong>HEAD</strong>.</div>
+            </div>
+        </div>
+
+        <h3>Climb the ladder by guessing words correctly to reach the top!</h3>
+    </div>
+</div>
+
+
+<div id="game-modal" class="modal">
+    <div class="modal-content">
+        <p id="modal-message"></p>
+        <button id="whatsapp-share" class="whatsapp-button">Share on WhatsApp</button>
+    </div>
+    </div>
+
+
+        <!-- Feedback Section -->
+        <p id="message"></p>
+        <p>Steps Taken: <span id="step-count">0</span></p>
+    </main>
+    <footer>
+        <p>Enjoy climbing the word ladder!</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

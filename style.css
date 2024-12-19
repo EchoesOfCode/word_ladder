@@ -1,0 +1,375 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #1c1621; /* Deep purple background */
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontal alignment */
+    justify-content: center; /* Vertical alignment */
+    height: 100vh; /* Full screen height */
+    text-align: center; /* Ensures text is centered */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #d8b6ff;
+}
+
+/* Ladder Background */
+.ladder-background {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 0 auto; /* Center horizontally */
+    display: flex;
+    flex-direction: column-reverse; /* Start from bottom to top */
+    justify-content: space-between;
+    background: transparent;
+    border-left: 5px solid #d8b6ff;
+    border-right: 5px solid #d8b6ff;
+}
+
+/* Ladder Rungs */
+.rung {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 20px 0;
+    border-top: 3px solid #d8b6ff;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Arrange children vertically */
+    align-items: center; /* Center horizontally */
+    gap: 10px; /* Space between elements */
+
+}
+
+/* Fix the line above text */
+#rung-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Spacing between word, input, and button */
+    border-top: none; /* Remove the upper line */
+    padding-top: 20px; /* Optional spacing adjustment */
+}
+
+
+
+#rung-6 {
+    border-top: 3px solid #d8b6ff;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 20px 0;
+    border-top: 3px solid #d8b6ff;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Arrange children vertically */
+    align-items: center; /* Center horizontally */
+    gap: 10px; /* Space between elements */
+}
+
+.rung:first-child {
+    border-top: none;
+}
+
+/* Completed Rung */
+.rung.completed {
+    background-color: #477f54; /* Green for correct words */
+    color: white;
+    animation: glow 1s forwards;
+}
+
+/* Glow Effect */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px #28a745;
+    }
+    100% {
+        box-shadow: 0 0 0px #28a745;
+    }
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #d8b6ff;
+}
+/* Align word */
+.word {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px; /* Adds space below the word */
+    text-align: center;
+}
+
+/* Input container */
+.input-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    gap: 10px; /* Space between input and button */
+}
+
+
+
+/* Input Field */
+.input-container input {
+    padding: 10px;
+    width: 200px;
+    font-size: 1rem;
+    border: 2px solid #6c5ce7; /* Vibrant border color */
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+.input-container input:focus {
+    border-color: #00cec9; /* Bright border color on focus */
+    box-shadow: 0 0 10px #00cec9; /* Glowing effect */
+}
+
+/* Submit Button */
+.input-container button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: linear-gradient(to right, #6c5ce7, #a29bfe); /* Gradient background */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.input-container button:hover {
+    background: linear-gradient(to right, #00cec9, #0984e3); /* New gradient on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.input-container button:active {
+    transform: translateY(1px); /* Button press effect */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#next-word {
+    width: 200px;       /* Increase width */
+    height: 20px;       /* Increase height */
+    font-size: 1.1rem;  /* Increase font size for better readability */
+    padding: 5px 10px;  /* Add padding inside the text box */
+    border: 2px solid #6c5ce7; /* Add a clean border */
+    border-radius: 2px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    text-align: center;
+}
+
+#next-word:focus {
+    border-color: #00cec9; /* Highlight border color when focused */
+    box-shadow: 0 0 8px rgba(0, 206, 201, 0.8); /* Add glow effect */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Modal Container */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease;
+}
+
+.close-button {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    color: #212020;
+}
+
+
+.modal-content p {
+    margin: 0 0 20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    background-color: #25d366;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.modal-content button:hover {
+    background-color:  #1ebe57;
+}
+
+h2 {
+    font-weight: bold;
+    color: #212020;
+    text-align: left;
+}
+
+h3 {
+    
+    color: #212020;
+    text-align: left;
+    
+}
+
+ul {
+    padding-left: 20px;
+    color: #212020;
+    text-align: left;
+    
+}
+
+/* Modal Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.whatsapp-button {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.whatsapp-button:hover {
+    background-color: #1ebe57;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+
+#hearts-container {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: red;
+}
+
+.heart {
+    display: inline-block;
+    margin: 0 5px;
+    font-size: 30px;
+    color: #ff4d6d; /* Bright red color */
+    text-shadow: 0px 0px 5px rgba(255, 77, 109, 0.5); /* Glow effect */
+}
+
+
+
+
+.ladder-modal {
+    position: relative;
+    width: 220px;
+   /* height: 350px;*/
+    margin:  auto; /* Center horizontally */
+    display: flex;
+    flex-direction: column-reverse; /* Start from bottom to top */
+    justify-content: space-between;
+    background: transparent;
+    border-left: 5px solid hwb(267 7% 88%);
+    border-right: 5px solid hwb(267 7% 88%);
+    padding: 30px 0;
+    
+    
+}
+
+.rung-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 0;
+    border-bottom: 5px solid hwb(267 7% 88%);
+    background:  #477f54 ; /* Correct word color (green) */
+    position: relative;
+
+}
+
+
+.rung-modal:last-child {
+    border-top: 5px solid hwb(267 7% 88%);
+}
+.word-correct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 30px;
+    background:  #477f54; /* Correct word color (green) */
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 2px solid  #477f54;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.rung-explanation {
+    font-size: 12px;
+    color: white;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/* Position the left line */
+.ladder-modal::before {
+    left: calc(50% - 70px); /* Adjust based on rung width */
+}
+
+/* Position the right line */
+.ladder-modal::after {
+    right: calc(50% - 70px); /* Adjust based on rung width */
+}
+
+
+
+
+
+
+
