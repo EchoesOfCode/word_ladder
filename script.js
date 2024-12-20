@@ -80,10 +80,7 @@ function showModal(message) {
     const wordsGuessed = guessedWords.length;
 
     const shareMessage = 
-        `*${message}*\n
-        *Steps Taken:* ${stepCount}\n
-        *Words Guessed:* ${wordsGuessed}/${totalWords}\n
-        *Can you beat my score? Try the Word Ladder Game now!*`;
+        ` ${message}\n Steps Taken: ${stepCount}\n Words Guessed: ${wordsGuessed}/${totalWords}\n Can you do better? Try the Word Ladder Game now!  https://echoesofcode.github.io/word_ladder/ `;
 
     modalMessage.innerHTML = `
         ${message}<br><br>
@@ -157,8 +154,8 @@ function submitWord() {
         } else {
             // Game completed
             console.log("Game Over: Word ladder completed.");
-            messageElement.textContent = "Congratulations! You completed the word ladder.";
-            showModal("🎉 Congratulations! You completed the word ladder!");
+            messageElement.textContent = "Hell Yeah! You completed the word ladder.";
+            showModal("🎉 Hell yeah! I completed the word ladder!");
             inputBox.remove();
             submitButton.remove();
         }
@@ -171,7 +168,7 @@ function submitWord() {
         renderHearts(); 
 
         if (wrongAttempts >= expectedAttempts) {
-            showModal("Thanks for playing! Better luck next time.");
+            showModal("Aww! This is harder than it looks! ");
             inputBox.remove();
             submitButton.remove();
         }
