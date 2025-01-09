@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background:  #333;/* Deep purple background */
+    background:  #201a24;/* Deep purple background */
     color: white;
     margin: 0;
     padding: min(2em, 8%);
@@ -12,6 +12,13 @@ body {
     height: 100dvh; /* Full screen height */
     text-align: center; /* Ensures text is centered */
 }
+
+/**{ border: 1px solid red !important; }**/
+
+* {
+    box-sizing: border-box; /* Prevent padding/border from exceeding element dimensions */
+}
+
 
 
 header {
@@ -389,7 +396,7 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color:  #333;
+    background-color: #201a24;
     color: #333;
     padding: 2em;
     width: 80%;
