@@ -1,38 +1,76 @@
 /* General Styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background: #1c1621; /* Deep purple background */
+    background:  #333;/* Deep purple background */
     color: white;
     margin: 0;
-    padding: 0;
+    padding: min(2em, 8%);
     display: flex;
     flex-direction: column;
     align-items: center; /* Horizontal alignment */
     justify-content: center; /* Vertical alignment */
-    height: 100vh; /* Full screen height */
+    height: 100dvh; /* Full screen height */
     text-align: center; /* Ensures text is centered */
 }
 
+*{ border: 1px solid red !important; }*
+
+
+
+
 header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: min(2em, 8%);
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, calc(6vw + 1rem), 2rem );
     color: #ffffff;
 }
 
+h2 {
+    font-weight: bold;
+    color: #212020;
+    text-align: left;
+}
+
+h3 {
+    
+    color: #212020;
+    text-align: left;
+    
+}
+
+ul {
+    padding-left: 20px;
+    color: #212020;
+    text-align: left;
+    
+}
+
 header p {
-    font-size: 1.2rem;
+    font-size: clamp(0.8rem, calc(3vw + 0.1rem), 1.3rem );
     color: #d8b6ff;
 }
+
+main{
+    margin-top: 1rem;
+}
+
+/* Disable scrolling on the main page */
+body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+
 
 /* Ladder Background */
 .ladder-background {
     position: relative;
-    width: 300px;
-    height: 400px;
+    width: clamp(5rem, calc(50vw + 1rem), 18rem );
+    height: clamp(5rem, calc(50dvh+ 1rem), 18rem );
     margin: 0 auto; /* Center horizontally */
     display: flex;
     flex-direction: column-reverse; /* Start from bottom to top */
@@ -45,9 +83,9 @@ header p {
 /* Ladder Rungs */
 .rung {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: clamp(0.1rem, calc(3vw + 1rem), 1.1rem );
     font-weight: bold;
-    padding: 20px 0;
+    padding: min(2em, 8%) 0;
     border-top: 3px solid #d8b6ff;
     color: white;
     position: relative;
@@ -65,7 +103,7 @@ header p {
     align-items: center;
     gap: 10px; /* Spacing between word, input, and button */
     border-top: none; /* Remove the upper line */
-    padding-top: 20px; /* Optional spacing adjustment */
+    padding-top: min(2em, 8%);/* Optional spacing adjustment */
 }
 
 
@@ -73,9 +111,9 @@ header p {
 #rung-6 {
     border-top: 3px solid #d8b6ff;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: clamp(0.5rem, calc(3vw + 1rem), 1.1rem );
     font-weight: bold;
-    padding: 20px 0;
+    padding: min(2em, 8%) 0;
     border-top: 3px solid #d8b6ff;
     color: white;
     position: relative;
@@ -110,14 +148,15 @@ header p {
 footer {
     margin-top: 20px;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: clamp(0.5rem, calc(4vw + 0.1rem), 1rem );
     color: #d8b6ff;
+    overflow: hidden;
 }
 /* Align word */
 .word {
     font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 15px; /* Adds space below the word */
+    margin-bottom: min(1em, 8%); /* Adds space below the word */
     text-align: center;
 }
 
@@ -132,8 +171,8 @@ footer {
 
 /* Input Field */
 .input-container input {
-    padding: 10px;
-    width: 200px;
+    padding: min(1em, 8%);
+    width: clamp(5rem, calc(25vw + 1rem), 18rem );
     font-size: 1rem;
     border: 2px solid #6c5ce7; /* Vibrant border color */
     border-radius: 25px;
@@ -172,9 +211,9 @@ footer {
 }
 
 #next-word {
-    width: 200px;       /* Increase width */
+    width:  clamp(1rem, calc(25vw + 2rem), 15rem);    /*Increase width */
     height: 20px;       /* Increase height */
-    font-size: 1.1rem;  /* Increase font size for better readability */
+    font-size: 0.9rem;  /* Increase font size for better readability */
     padding: 5px 10px;  /* Add padding inside the text box */
     border: 2px solid #6c5ce7; /* Add a clean border */
     border-radius: 2px; /* Rounded corners */
@@ -205,16 +244,17 @@ footer {
 
 .modal-content {
     background-color: #fff;
-    padding: 20px;
+    padding: min(1em, 8%);
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     animation: fadeIn 0.5s ease;
 }
 
+
 .close-button {
     float: right;
-    font-size: 28px;
+    font-size: clamp(0.8rem, calc(3vw + 0.1rem), 1.3rem );
     cursor: pointer;
     color: #212020;
 }
@@ -222,7 +262,7 @@ footer {
 
 .modal-content p {
     margin: 0 0 20px;
-    font-size: 1.5rem;
+    font-size: clamp(0.8rem, calc(3vw + 0.1rem), 1.3rem );
     color: #333;
 }
 
@@ -233,32 +273,13 @@ footer {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, calc(3vw + 0.1rem), 1.3rem );
 }
 
 .modal-content button:hover {
     background-color:  #1ebe57;
 }
 
-h2 {
-    font-weight: bold;
-    color: #212020;
-    text-align: left;
-}
-
-h3 {
-    
-    color: #212020;
-    text-align: left;
-    
-}
-
-ul {
-    padding-left: 20px;
-    color: #212020;
-    text-align: left;
-    
-}
 
 /* Modal Fade-in Animation */
 @keyframes fadeIn {
@@ -272,7 +293,7 @@ ul {
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, calc(3vw + 0.1rem), 1.3rem );
     cursor: pointer;
     margin: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -288,15 +309,14 @@ ul {
 
 #hearts-container {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: min(1em, 4%);
     color: red;
 }
 
 .heart {
     display: inline-block;
     margin: 0 5px;
-    font-size: 30px;
+    font-size: clamp(1.5rem, calc(2vw + 0.5rem), 2.5rem );
     color: #ff4d6d; /* Bright red color */
     text-shadow: 0px 0px 5px rgba(255, 77, 109, 0.5); /* Glow effect */
 }
@@ -306,7 +326,7 @@ ul {
 
 .ladder-modal {
     position: relative;
-    width: 220px;
+    width:  clamp(13rem, calc(2vw + 0.5rem), 20rem);
    /* height: 350px;*/
     margin:  auto; /* Center horizontally */
     display: flex;
@@ -347,11 +367,11 @@ ul {
     border-radius: 5px;
     border: 2px solid  #477f54;
     margin-top: 5px;
-    font-size: 14px;
+    font-size: clamp(0.8rem, calc(3vw + 0.1rem), 1.1rem );
 }
 
 .rung-explanation {
-    font-size: 12px;
+    font-size: clamp(0.6rem, calc(3vw + 0.1rem), 0.8rem );
     color: white;
     margin-bottom: 5px;
     text-align: center;
@@ -367,9 +387,171 @@ ul {
     right: calc(50% - 70px); /* Adjust based on rung width */
 }
 
+/* Default Modal Styling (Base for All Screens) */
+#how-to-play-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:  #333;
+    color: #333;
+    padding: 2em;
+    width: 80%;
+    height: 80%;    
+    max-width: 600px; /* Limit width for large screens 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+    border-radius: 10px;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 80dvh; /* Limit modal height to 80% of the viewport */
+    font-size: clamp(0.9em, 1.5vw, 1.2em); 
+
+}
 
 
 
+/* Small Phones (e.g., iPhone SE, Galaxy A01) */
+@media (max-width: 320px) {
+    #how-to-play-modal {
+        width: 90%; /* Use most of the screen width */
+        padding: 1em; /* Reduce padding */
+        font-size: 0.7em; /* Smaller font size */
+    }
+
+    #how-to-play-modal h2 {
+        font-size: 1.1em; /* Smaller heading */
+    }
+    #how-to-play-modal h3 {
+        font-size: 0.9em; /* Bigger heading for better focus */
+    }
+    #how-to-play-modal ul {
+        font-size: 0.7em; /* Bigger heading for better focus */
+    }
+    .word-correct {
+        font-size: 0.7em;
+    }
+}
+
+/* Medium Phones (e.g., iPhone 8, Galaxy S9) */
+@media (min-width: 321px) and (max-width: 375px) {
+    #how-to-play-modal {
+        width: 85%; /* Slightly wider */
+        padding: 1.5em;
+        font-size: 0.7em;
+    }
+    #how-to-play-modal h2 {
+        font-size: 1.1em; /* Smaller heading */
+    }
+    #how-to-play-modal h3 {
+        font-size: 1em; /* Bigger heading for better focus */
+    }
+    #how-to-play-modal ul {
+        font-size: 0.8em; /* Bigger heading for better focus */
+    }
+   
+}
+
+/* Large Phones (e.g., iPhone 12, Galaxy S20) */
+@media (min-width: 376px) and (max-width: 414px) {
+    #how-to-play-modal {
+        width: 80%; /* Balanced width */
+        padding: 2em; /* Standard padding */
+        font-size: 0.7em; /* Default font size */
+    }
+
+    #how-to-play-modal h1 {
+        font-size: 1.5em; /* Slightly larger heading */
+    }
+}
+
+/* Extra-Large Phones (e.g., iPhone 14 Pro Max, Galaxy Note Series) */
+@media (min-width: 415px) and (max-width: 480px) {
+    #how-to-play-modal {
+        width: 75%; /* More compact width */
+        padding: 2em;
+        font-size: 0.7em;
+    }
+
+    #how-to-play-modal h1 {
+        font-size: 1.6em; /* Larger heading for readability */
+    }
+}
 
 
 
+/* Medium Screens (Tablets) */
+@media (min-width: 481px) and (max-width: 768px) {
+    #how-to-play-modal {
+        width: 70%; /* Wider for tablets */
+        height: 80%;
+        padding: 2em;
+        font-size: 0.8em; /* Default font size */
+    }
+
+    #how-to-play-modal h2 {
+        font-size: 1.2em; /* Larger heading for better readability */
+    }
+    #how-to-play-modal h3 {
+        font-size: 1em; /* Bigger heading for better focus */
+    }
+    #how-to-play-modal ul {
+        font-size: 0.9em; /* Bigger heading for better focus */
+    }
+}
+
+/* Tablets (Portrait and Landscape: 768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    #how-to-play-modal {
+        width: 70%; /* Slightly narrower modal */
+        padding: 1.5em 2em; /* Increase padding */
+        font-size: 1.1em; /* Larger text for readability */
+        max-width: 700px; /* Expand width limit for larger tablets */
+    }
+    #how-to-play-modal h2 {
+        font-size: 1.2em; /* Larger heading for better readability */
+    }
+    #how-to-play-modal h3 {
+        font-size: 1em; /* Bigger heading for better focus */
+    }
+    #how-to-play-modal ul {
+        font-size: 0.9em; /* Bigger heading for better focus */
+    }
+}
+
+/* Small Desktops (1025px to 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    #how-to-play-modal {
+        width: 60%; /* Narrower width for better focus */
+        padding: 2em 2.5em; /* Spacious padding */
+        font-size: 1.1em; /* Slightly larger font size */
+        max-width: 700px; /* Expand max width */
+    }
+    #how-to-play-modal h2 {
+        font-size: 1.1em; /* Larger heading for better readability */
+    }
+    #how-to-play-modal h3 {
+        font-size: 0.9em; /* Bigger heading for better focus */
+    }
+    #how-to-play-modal ul {
+        font-size: 0.8em; /* Bigger heading for better focus */
+    }
+}
+
+/* Large Desktops and Widescreens (1441px and above) */
+@media (min-width: 1441px) {
+    #how-to-play-modal {
+        width: 50%; /* More compact width for very large screens */
+        padding: 2em 2.5em; /* Generous padding */
+        font-size: 1.2em; /* Larger font size */
+        max-width: 900px; /* Further expand max width */
+    }
+    #how-to-play-modal h2 {
+        font-size: 1.1em; /* Larger heading for better readability */
+    }
+    #how-to-play-modal h3 {
+        font-size: 0.9em; /* Bigger heading for better focus */
+    }
+    #how-to-play-modal ul {
+        font-size: 0.8em; /* Bigger heading for better focus */
+    }
+}
