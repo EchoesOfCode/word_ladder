@@ -442,7 +442,7 @@ footer {
         width: 85%; /* Slightly wider */
         padding: 1.5em;
         font-size: 0.7em;
-        height: 90%; /* Use most of the screen width */
+        height: 95%; /* Use most of the screen width */
     }
     #how-to-play-modal h2 {
         font-size: 1.1em; /* Smaller heading */
