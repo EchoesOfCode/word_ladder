@@ -406,7 +406,7 @@ footer {
     border-radius: 10px;
     z-index: 1000;
     overflow-y: auto;
-    max-height: 80dvh; /* Limit modal height to 80% of the viewport */
+    max-height: 100dvh; /* Limit modal height to 80% of the viewport */
     font-size: clamp(0.9em, 1.5vw, 1.2em); 
 
 }
@@ -419,6 +419,7 @@ footer {
         width: 90%; /* Use most of the screen width */
         padding: 1em; /* Reduce padding */
         font-size: 0.7em; /* Smaller font size */
+        height: 90%; /* Use most of the screen width */
     }
 
     #how-to-play-modal h2 {
@@ -441,6 +442,7 @@ footer {
         width: 85%; /* Slightly wider */
         padding: 1.5em;
         font-size: 0.7em;
+        height: 90%; /* Use most of the screen width */
     }
     #how-to-play-modal h2 {
         font-size: 1.1em; /* Smaller heading */
@@ -460,6 +462,7 @@ footer {
         width: 80%; /* Balanced width */
         padding: 2em; /* Standard padding */
         font-size: 0.7em; /* Default font size */
+        height: 90%; /* Use most of the screen width */
     }
 
     #how-to-play-modal h1 {
@@ -473,6 +476,7 @@ footer {
         width: 75%; /* More compact width */
         padding: 2em;
         font-size: 0.7em;
+        height: 90%; /* Use most of the screen width */
     }
 
     #how-to-play-modal h1 {
@@ -509,6 +513,7 @@ footer {
         padding: 1.5em 2em; /* Increase padding */
         font-size: 1.1em; /* Larger text for readability */
         max-width: 700px; /* Expand width limit for larger tablets */
+        height: 90%; /* Use most of the screen width */
     }
     #how-to-play-modal h2 {
         font-size: 1.2em; /* Larger heading for better readability */
@@ -528,6 +533,7 @@ footer {
         padding: 2em 2.5em; /* Spacious padding */
         font-size: 1.1em; /* Slightly larger font size */
         max-width: 700px; /* Expand max width */
+        height: 90%; /* Use most of the screen width */
     }
     #how-to-play-modal h2 {
         font-size: 1.1em; /* Larger heading for better readability */
@@ -547,6 +553,7 @@ footer {
         padding: 2em 2.5em; /* Generous padding */
         font-size: 1.2em; /* Larger font size */
         max-width: 900px; /* Further expand max width */
+        height: 90%; /* Use most of the screen width */
     }
     #how-to-play-modal h2 {
         font-size: 1.1em; /* Larger heading for better readability */
