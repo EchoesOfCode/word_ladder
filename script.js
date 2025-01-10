@@ -2,7 +2,7 @@
 const inputBox = document.createElement("input");
 inputBox.type = "text";
 inputBox.id = "next-word";
-inputBox.placeholder = "Enter next word";
+inputBox.placeholder = "Enter guess word";
 
 const submitButton = document.createElement("button");
 submitButton.textContent = "Submit";
@@ -80,10 +80,11 @@ function showModal(message) {
     const wordsGuessed = guessedWords.length;
 
     const shareMessage = 
-        `*${message}*\n
-        *Steps Taken:* ${stepCount}\n
-        *Words Guessed:* ${wordsGuessed}/${totalWords}\n
-        *Can you beat my score? Try the Word Ladder Game now!*`;
+        `${message}
+Steps Taken: ${stepCount}
+Words Guessed: ${wordsGuessed}/${totalWords}
+Can you beat my score? Try the Word Ladder Game now!
+https://echoesofcode.github.io/word_ladder/ `;
 
     modalMessage.innerHTML = `
         ${message}<br><br>
@@ -125,7 +126,7 @@ function positionInputAtRung(index) {
 
     // Append input box and button
     currentRung.appendChild(inputBox);
-    currentRung.appendChild(submitButton);
+    //currentRung.appendChild(submitButton);
 
     inputBox.value = ""; // Clear input
     inputBox.focus();    // Set focus on input box
@@ -158,7 +159,7 @@ function submitWord() {
             // Game completed
             console.log("Game Over: Word ladder completed.");
             messageElement.textContent = "Congratulations! You completed the word ladder.";
-            showModal("🎉 Congratulations! You completed the word ladder!");
+            showModal("🎉 Yay! I completed the word ladder!");
             inputBox.remove();
             submitButton.remove();
         }
@@ -171,7 +172,7 @@ function submitWord() {
         renderHearts(); 
 
         if (wrongAttempts >= expectedAttempts) {
-            showModal("Thanks for playing! Better luck next time.");
+            showModal("Aww! Damn! Lets try again.");
             inputBox.remove();
             submitButton.remove();
         }

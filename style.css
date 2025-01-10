@@ -177,7 +177,7 @@ footer {
     padding: min(1em, 8%);
     width: clamp(5rem, calc(25vw + 1rem), 18rem );
     font-size: 1rem;
-    border: 2px solid #6c5ce7; /* Vibrant border color */
+    border: 1px solid #6c5ce7; /* Vibrant border color */
     border-radius: 25px;
     outline: none;
     transition: all 0.3s ease-in-out;
@@ -214,11 +214,11 @@ footer {
 }
 
 #next-word {
-    width:  clamp(1rem, calc(25vw + 2rem), 15rem);    /*Increase width */
+    width:  clamp(9rem, calc(25vw + 2rem), 15rem);    /*Increase width */
     height: 20px;       /* Increase height */
     font-size: 0.9rem;  /* Increase font size for better readability */
-    padding: 5px 10px;  /* Add padding inside the text box */
-    border: 2px solid #6c5ce7; /* Add a clean border */
+    padding: 10px 10px;  /* Add padding inside the text box */
+    border: 1px solid #6c5ce7; /* Add a clean border */
     border-radius: 2px; /* Rounded corners */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
     text-align: center;
@@ -257,10 +257,20 @@ footer {
 
 .close-button {
     float: right;
-    font-size: clamp(0.8rem, calc(3vw + 0.1rem), 1.3rem );
+    font-size: clamp(1.5rem, calc(3vw + 0.1rem), 2rem );
     cursor: pointer;
-    color: #212020;
+    color: #2a2929;
 }
+
+
+/* Hover Effect */
+.close-button:hover {
+    color: rgb(17, 15, 15);     /* White '×' on hover */
+    transform: scale(1.3);     /* Slight zoom effect */
+    transition: transform 0.5s ease-in-out,color 0.5s ease;
+
+}
+
 
 
 .modal-content p {
@@ -348,7 +358,7 @@ footer {
     flex-direction: column;
     align-items: center;
     margin: 0px 0;
-    border-bottom: 5px solid hwb(267 7% 88%);
+    border-bottom: 0.2rem solid hwb(267 7% 88%);
     background:  #477f54 ; /* Correct word color (green) */
     position: relative;
 
@@ -418,8 +428,8 @@ footer {
     #how-to-play-modal {
         width: 90%; /* Use most of the screen width */
         padding: 1em; /* Reduce padding */
-        font-size: 0.7em; /* Smaller font size */
-        height: 90%; /* Use most of the screen width */
+        font-size: 0.8em; /* Smaller font size */
+        height: 90%;
     }
 
     #how-to-play-modal h2 {
@@ -434,6 +444,9 @@ footer {
     .word-correct {
         font-size: 0.7em;
     }
+    .rung-explanation {
+        font-size: 0.7em;
+    }
 }
 
 /* Medium Phones (e.g., iPhone 8, Galaxy S9) */
@@ -441,8 +454,8 @@ footer {
     #how-to-play-modal {
         width: 85%; /* Slightly wider */
         padding: 1.5em;
-        font-size: 0.7em;
-        height: 95%; /* Use most of the screen width */
+        font-size: 0.8em;
+        height: 90%;
     }
     #how-to-play-modal h2 {
         font-size: 1.1em; /* Smaller heading */
@@ -453,34 +466,64 @@ footer {
     #how-to-play-modal ul {
         font-size: 0.8em; /* Bigger heading for better focus */
     }
+    .word-correct {
+        font-size: 0.8em;
+    }
+    .rung-explanation {
+        font-size: 0.8em;
+    }
    
 }
 
 /* Large Phones (e.g., iPhone 12, Galaxy S20) */
 @media (min-width: 376px) and (max-width: 414px) {
     #how-to-play-modal {
-        width: 80%; /* Balanced width */
+        width: 85%; /* Balanced width */
         padding: 2em; /* Standard padding */
-        font-size: 0.7em; /* Default font size */
-        height: 90%; /* Use most of the screen width */
+        font-size: 0.9em; /* Default font size */
+        height: 80%;
     }
 
-    #how-to-play-modal h1 {
-        font-size: 1.5em; /* Slightly larger heading */
+    #how-to-play-modal h2 {
+        font-size: 1.3em; /* Smaller heading */
+    }
+    #how-to-play-modal h3 {
+        font-size: 1em; /* Bigger heading for better focus */
+    }
+    #how-to-play-modal ul {
+        font-size: 0.9em; /* Bigger heading for better focus */
+    }
+    .word-correct {
+        font-size: 0.9em;
+    }
+    .rung-explanation {
+        font-size: 0.9em;
     }
 }
 
 /* Extra-Large Phones (e.g., iPhone 14 Pro Max, Galaxy Note Series) */
 @media (min-width: 415px) and (max-width: 480px) {
     #how-to-play-modal {
-        width: 75%; /* More compact width */
+        width: 85%; /* More compact width */
         padding: 2em;
-        font-size: 0.7em;
-        height: 90%; /* Use most of the screen width */
+        font-size: 1em;
+        height: 80%;
     }
 
-    #how-to-play-modal h1 {
-        font-size: 1.6em; /* Larger heading for readability */
+    #how-to-play-modal h2 {
+        font-size: 1.2em; /* Smaller heading */
+    }
+    #how-to-play-modal h3 {
+        font-size: 1em; /* Bigger heading for better focus */
+    }
+    #how-to-play-modal ul {
+        font-size: 0.9em; /* Bigger heading for better focus */
+    }
+    .word-correct {
+        font-size: 0.9em;
+    }
+    .rung-explanation {
+        font-size: 0.9em;
     }
 }
 
@@ -489,10 +532,10 @@ footer {
 /* Medium Screens (Tablets) */
 @media (min-width: 481px) and (max-width: 768px) {
     #how-to-play-modal {
-        width: 70%; /* Wider for tablets */
-        height: 80%;
+        width: 80%; /* Wider for tablets */
+        height: 90%;
         padding: 2em;
-        font-size: 0.8em; /* Default font size */
+        font-size: 0.9em; /* Default font size */
     }
 
     #how-to-play-modal h2 {
@@ -503,6 +546,12 @@ footer {
     }
     #how-to-play-modal ul {
         font-size: 0.9em; /* Bigger heading for better focus */
+    }
+    .word-correct {
+        font-size: 0.9em;
+    }
+    .rung-explanation {
+        font-size: 0.9em;
     }
 }
 
@@ -513,7 +562,8 @@ footer {
         padding: 1.5em 2em; /* Increase padding */
         font-size: 1.1em; /* Larger text for readability */
         max-width: 700px; /* Expand width limit for larger tablets */
-        height: 90%; /* Use most of the screen width */
+        height: 95%;
+        
     }
     #how-to-play-modal h2 {
         font-size: 1.2em; /* Larger heading for better readability */
@@ -524,6 +574,12 @@ footer {
     #how-to-play-modal ul {
         font-size: 0.9em; /* Bigger heading for better focus */
     }
+    .word-correct {
+        font-size: 0.9em;
+    }
+    .rung-explanation {
+        font-size: 0.9em;
+    }
 }
 
 /* Small Desktops (1025px to 1440px) */
@@ -533,7 +589,7 @@ footer {
         padding: 2em 2.5em; /* Spacious padding */
         font-size: 1.1em; /* Slightly larger font size */
         max-width: 700px; /* Expand max width */
-        height: 90%; /* Use most of the screen width */
+        height: 90%;
     }
     #how-to-play-modal h2 {
         font-size: 1.1em; /* Larger heading for better readability */
@@ -543,6 +599,12 @@ footer {
     }
     #how-to-play-modal ul {
         font-size: 0.8em; /* Bigger heading for better focus */
+    }
+    .word-correct {
+        font-size: 0.8em;
+    }
+    .rung-explanation {
+        font-size: 0.8em;
     }
 }
 
@@ -553,7 +615,7 @@ footer {
         padding: 2em 2.5em; /* Generous padding */
         font-size: 1.2em; /* Larger font size */
         max-width: 900px; /* Further expand max width */
-        height: 90%; /* Use most of the screen width */
+        height: 90%;
     }
     #how-to-play-modal h2 {
         font-size: 1.1em; /* Larger heading for better readability */
@@ -563,5 +625,11 @@ footer {
     }
     #how-to-play-modal ul {
         font-size: 0.8em; /* Bigger heading for better focus */
+    }
+    .word-correct {
+        font-size: 0.8em;
+    }
+    .rung-explanation {
+        font-size: 0.8em;
     }
 }
