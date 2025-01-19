@@ -1,635 +1,972 @@
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background:  #201a24;/* Deep purple background */
-    color: white;
-    margin: 0;
-    padding: min(2em, 8%);
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Horizontal alignment */
-    justify-content: center; /* Vertical alignment */
-    height: 100dvh; /* Full screen height */
-    text-align: center; /* Ensures text is centered */
-}
 
-/**{ border: 1px solid red !important; }**/
+/* style.css */
 
 * {
-    box-sizing: border-box; /* Prevent padding/border from exceeding element dimensions */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
 }
 
 
-
-header {
+body {
+    font-family: Arial, sans-serif;
+    
+    background-color: #ffffff;
     text-align: center;
-    margin-bottom: min(2em, 8%);
-}
-
-header h1 {
-    font-size: clamp(1.5rem, calc(6vw + 1rem), 2rem );
-    color: #ffffff;
-}
-
-h2 {
-    font-weight: bold;
-    color: #212020;
-    text-align: left;
-}
-
-h3 {
-    
-    color: #212020;
-    text-align: left;
-    
-}
-
-ul {
-    padding-left: 20px;
-    color: #212020;
-    text-align: left;
-    
-}
-
-header p {
-    font-size: clamp(0.8rem, calc(3vw + 0.1rem), 1.3rem );
-    color: #d8b6ff;
-}
-
-main{
-    margin-top: 1rem;
-}
-
-/* Disable scrolling on the main page */
-body.modal-open {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
     overflow: hidden;
-    position: fixed;
-    width: 100%;
 }
 
+/* Define a global header height for easy scaling */
+:root {
+    --header-height: 100px; /* Adjust this to change header and button size */
+}
 
+.game-container {   
+    padding: 0.5em;
+    flex :1;
+    overflow-y: auto;
+    box-sizing: border-box;
+    
+}
 
-/* Ladder Background */
-.ladder-background {
-    position: relative;
-    width: clamp(5rem, calc(50vw + 1rem), 18rem );
-    height: clamp(5rem, calc(50dvh+ 1rem), 18rem );
-    margin: 0 auto; /* Center horizontally */
+.game, .keyboard {
     display: flex;
-    flex-direction: column-reverse; /* Start from bottom to top */
+    flex-direction: column;
+}
+
+.gameHeader{
+    width: 100%;          /* Full width, no overflow */
+    max-width: 100vw;     
+    height: 60px;
+    align-items: center;
+    border-bottom: 1px solid rgb(224, 221, 221);
+    display: flex !important;
+    flex-direction: row;
     justify-content: space-between;
-    background: transparent;
-    border-left: 5px solid #d8b6ff;
-    border-right: 5px solid #d8b6ff;
+    padding: 0 10px; 
+    box-sizing: border-box;
+    font-size: clamp(18px, 7vw, 32px); 
+    min-height: 40px; 
+    overflow: hidden;
+    visibility: visible !important;
+    opacity: 1 !important;
+
 }
 
-/* Ladder Rungs */
-.rung {
-    text-align: center;
-    font-size: clamp(0.1rem, calc(3vw + 1rem), 1.1rem );
-    font-weight: bold;
-    padding: min(2em, 8%) 0;
-    border-top: 3px solid #d8b6ff;
-    color: white;
-    position: relative;
+.gameHeaderTitle{
+    font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 1.2em; 
+}
+
+
+
+.gameHeaderRightGroup{
     display: flex;
-    flex-direction: column; /* Arrange children vertically */
-    align-items: center; /* Center horizontally */
-    gap: 10px; /* Space between elements */
-
+    flex-direction: row;
+    justify-content: flex-start;
+    
 }
 
-/* Fix the line above text */
-#rung-1 {
+.gameHeaderLeftGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    
+}
+
+/* Ensure left and right groups don't affect centering */
+.gameHeaderLeftGroup,
+.gameHeaderRightGroup {
+    position: absolute;
+}
+
+.gameHeaderLeftGroup {
+    left: 20px;
+}
+
+.gameHeaderRightGroup {
+    right: 10px;
+}
+
+.game{
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-grow: 1;
+}
+
+#grid-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px; /* Spacing between word, input, and button */
-    border-top: none; /* Remove the upper line */
-    padding-top: min(2em, 8%);/* Optional spacing adjustment */
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0 10px;
+    border-radius: 8px;
+    flex-grow: 1;
+    padding-bottom: 60px; /* Space for the keyboard */
+    gap: 0.5em;
+    width: 100%;
 }
 
+#guess-grid {
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+}
 
-
-#rung-6 {
-    border-top: 3px solid #d8b6ff;
-    text-align: center;
-    font-size: clamp(0.5rem, calc(3vw + 1rem), 1.1rem );
-    font-weight: bold;
-    padding: min(2em, 8%) 0;
-    border-top: 3px solid #d8b6ff;
-    color: white;
-    position: relative;
+.word-row {
     display: flex;
-    flex-direction: column; /* Arrange children vertically */
-    align-items: center; /* Center horizontally */
-    gap: 10px; /* Space between elements */
+    justify-content: center;
+    padding-bottom: 5px;
+   /* margin-bottom: 4px;*/ 
 }
 
-.rung:first-child {
-    border-top: none;
-}
 
-/* Completed Rung */
-.rung.completed {
-    background-color: #477f54; /* Green for correct words */
-    color: white;
-    animation: glow 1s forwards;
-}
 
-/* Glow Effect */
-@keyframes glow {
-    0% {
-        box-shadow: 0 0 10px #28a745;
-    }
-    100% {
-        box-shadow: 0 0 0px #28a745;
-    }
-}
-
-/* Footer */
-footer {
-    margin-top: 20px;
-    text-align: center;
-    font-size: clamp(0.5rem, calc(4vw + 0.1rem), 1rem );
-    color: #d8b6ff;
-    overflow: hidden;
-}
-/* Align word */
-.word {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: min(1em, 8%); /* Adds space below the word */
-    text-align: center;
-}
-
-/* Input container */
-.input-container {
+.tile {
+    width: 14vw;
+    height: 14vw;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    gap: 10px; /* Space between input and button */
+    max-width: 60px;
+    max-height: 60px;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 2px solid #d3d3d3; /* Added full border */
+    background-color: white;
+    border-radius: 0%;   
 }
 
-
-
-/* Input Field */
-.input-container input {
-    padding: min(1em, 8%);
-    width: clamp(5rem, calc(25vw + 1rem), 18rem );
-    font-size: 1rem;
-    border: 1px solid #6c5ce7; /* Vibrant border color */
-    border-radius: 25px;
-    outline: none;
-    transition: all 0.3s ease-in-out;
-    text-align: center;
+.tile.filled {
+    background-color: #d3d6da;
 }
 
-.input-container input:focus {
-    border-color: #00cec9; /* Bright border color on focus */
-    box-shadow: 0 0 10px #00cec9; /* Glowing effect */
+.tile.empty {
+    background-color: white;
 }
 
-/* Submit Button */
-.input-container button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background: linear-gradient(to right, #6c5ce7, #a29bfe); /* Gradient background */
+.tile:not(:last-child){
+    margin-right: 5px;
+}
+
+.tile.correct-letter {
+    background-color: #6aaa64;
     color: white;
+    border: 2px solid #6aaa64;
+}   
+
+.tile.changed-letter {
+    border: 2px solid #000000;
+}
+
+/* Active tile for the next input */
+.active-tile {
+    border: 1px solid #000000 !important;  /* Blue border for next input */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Optional glow */
+}
+
+
+.keyboard {
+    margin-top: 30px;
+    padding: 8px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+.key-row {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 8px;
+    flex-wrap:inherit;
+}
+.key{
+    font-size: 18px;
+}
+
+.key, #enter-key, #backspace-key {
+    width: 9vw;
+    height: 12vw;
     border: none;
-    border-radius: 25px;
+    max-width: 40px;
+    max-height: 60px;
+    border-radius: 4px;
+    background-color: #d6d9dd;
+    font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
+    font-family: inherit;
+    font-size: 1.25em;
 }
 
-.input-container button:hover {
-    background: linear-gradient(to right, #00cec9, #0984e3); /* New gradient on hover */
-    transform: translateY(-2px); /* Slight lift effect */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+#enter-key {
+    background-color: #00800080;
+    color: black;
+    width: 16vw;
+    max-width: 60px;
 }
 
-.input-container button:active {
-    transform: translateY(1px); /* Button press effect */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+#backspace-key {
+    background-color: #d6d9dd;
+    width: 16vw;
+    max-width: 60px;
+    font-size: 4vw;
 }
 
-#next-word {
-    width:  clamp(9rem, calc(25vw + 2rem), 15rem);    /*Increase width */
-    height: 20px;       /* Increase height */
-    font-size: 0.9rem;  /* Increase font size for better readability */
-    padding: 10px 10px;  /* Add padding inside the text box */
-    border: 1px solid #6c5ce7; /* Add a clean border */
-    border-radius: 2px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    text-align: center;
+/* Smooth scrolling adjustment */
+.game-container::-webkit-scrollbar {
+    width: 0;
 }
 
-#next-word:focus {
-    border-color: #00cec9; /* Highlight border color when focused */
-    box-shadow: 0 0 8px rgba(0, 206, 201, 0.8); /* Add glow effect */
-    outline: none; /* Remove default focus outline */
+.game-container {
+    scrollbar-width: none;
 }
 
-/* Modal Container */
-.modal {
-    display: none; /* Hidden by default */
+#popup-message {
+    position: fixed;
+    background-color: #000000;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    transition: opacity 0.05s ease-in-out;
+
+}
+
+#popup-message.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(-5px);
+}
+
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+
+ /*Reset Button - Remove default styles */
+#reset-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: calc(var(--header-height) * 0.5); /* 50% of header height */
+    height: calc(var(--header-height) * 0.5); /* Keep it square */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ease;
+
+}
+
+/* Circular arrow design */
+.reset-icon {
+    width: calc(var(--header-height) * 0.25); /* 50% of header height */
+    height: calc(var(--header-height) * 0.25); /* Keep it square */
+    border: 3px solid #333; /* Circle border */
+    border-radius: 50%; /* Make it a circle */
+    border-top-color: transparent; /* Create the gap */
+    position: relative;
+    box-sizing: border-box;
+    
+}
+
+/* Arrowhead */
+.reset-icon::before {
+    content: '';
+    position: absolute;
+    top: -calc(var(--header-height) * 5);
+    left: calc(var(--header-height) * 0.1);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #333; /* Arrow color */
+    transform: rotate(-45deg);
+}
+
+/* Rotate on hover */
+#reset-button:hover .reset-icon {
+    transform: rotate(-120deg);
+}
+
+/* Popup Overlay */
+.popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    background-color: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /* Hidden by default */
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
-.modal-content {
+/* Popup Content Box */
+
+
+.popup-content {
+    font-family: nyt-karnakcondensed,Georgia;
     background-color: #fff;
-    padding: min(1em, 8%);
-    border-radius: 8px;
+    padding: 20px 30px;
+    border-radius: 10px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.5s ease;
+    width: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: slideIn 0.3s ease;
 }
 
-
-.close-button {
-    float: right;
-    font-size: clamp(1.5rem, calc(3vw + 0.1rem), 2rem );
+/* Close Button */
+#popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
     cursor: pointer;
-    color: #2a2929;
 }
 
-
-/* Hover Effect */
-.close-button:hover {
-    color: rgb(17, 15, 15);     /* White '×' on hover */
-    transform: scale(1.3);     /* Slight zoom effect */
-    transition: transform 0.5s ease-in-out,color 0.5s ease;
-
-}
-
-
-
-.modal-content p {
-    margin: 0 0 20px;
-    font-size: clamp(0.8rem, calc(3vw + 0.1rem), 1.3rem );
+/* Popup Header */
+.popup-header h2 {
+    margin: 10px 0;
+    font-size: 24px;
     color: #333;
 }
 
-.modal-content button {
-    padding: 10px 20px;
-    background-color: #25d366;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: clamp(0.8rem, calc(3vw + 0.1rem), 1.3rem );
+.popup-header p {
+    color: #666;
+    font-size: 14px;
 }
 
-.modal-content button:hover {
-    background-color:  #1ebe57;
-}
-
-
-/* Modal Fade-in Animation */
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.whatsapp-button {
-    background-color: #25d366;
+/* WhatsApp Share Button */
+#whatsapp-share-btn {
+    background-color: #25D366;
     color: white;
+    padding: 10px 16px;
+    margin-top: 15px;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
-    font-size: clamp(0.8rem, calc(3vw + 0.1rem), 1.3rem );
+    font-size: 16px;
     cursor: pointer;
-    margin: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s ease;
 }
 
-.whatsapp-button:hover {
-    background-color: #1ebe57;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+#whatsapp-share-btn:hover {
+    background-color: #128C7E;
+}
+
+/* Play Again Button */
+#play-again-btn {
+    background-color: #000;
+    color: white;
+    padding: 10px 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Icon Styling */
+.popup-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* Popup Slide In Animation */
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Flex wrapper for best guess, start word, and guess counter */
+#start-row-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
 }
 
 
 
-#hearts-container {
-    text-align: center;
-    margin-bottom: min(1em, 4%);
+/* Guess Counter Circle - Right Side */
+#guess-counter {
+    width: 45px;
+    height: 45px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 2px dashed red;
+    background-color: white;
+    border-radius: 50%;
+}
+
+/* Best Guess Counter Circle - Left Side */
+#best-guess-counter {
+    width: 45px;
+    height: 45px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    border: 2px solid white; 
+    border-radius: 50%;
+
+}
+
+
+
+
+
+/* ❓ How to Play Button */
+#how-to-play-btn {
+    width: 30px;
+    height: 30px;
+    border: 3px solid black; /* Circle border */
+    border-radius: 50%; /* Makes it a circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; /* Make it clickable */
+    transition: transform 0.2s ease; 
+    margin: 5px;
+}
+
+#how-to-play-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Question Mark Inside the Circle */
+#how-to-play-btn::before {
+    content: "?"; /* Add the question mark */
+    font-size: 20px; /* Adjust font size */
+    font-weight: bold; /* Make it bold */
+    color: black; /* Question mark color */
+}
+
+.overlayContent{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+/* 🔲 Modal Overlay */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalHeaderRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.modalTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    justify-content: center;
+    
+}
+
+/* 📝 Modal Content */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 10px;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: var(--max-game-width);
+    overflow: auto;
+    max-height: 100vh;
+    box-sizing: border-box;
+    
+}
+
+/* ❌ Close Button */
+.close-btn {
+    font-size: 24px;
+    float: right;
+    cursor: pointer;
+}
+
+.close-btn:hover {
     color: red;
 }
 
-.heart {
-    display: inline-block;
-    margin: 0 5px;
-    font-size: clamp(1.5rem, calc(2vw + 0.5rem), 2.5rem );
-    color: #ff4d6d; /* Bright red color */
-    text-shadow: 0px 0px 5px rgba(255, 77, 109, 0.5); /* Glow effect */
+
+.modal-body {
+    overflow: auto;
+    width: 100%;
 }
 
-
-
-
-.ladder-modal {
-    position: relative;
-    width:  clamp(13rem, calc(2vw + 0.5rem), 20rem);
-   /* height: 350px;*/
-    margin:  auto; /* Center horizontally */
-    display: flex;
-    flex-direction: column-reverse; /* Start from bottom to top */
-    justify-content: space-between;
-    background: transparent;
-    border-left: 5px solid hwb(267 7% 88%);
-    border-right: 5px solid hwb(267 7% 88%);
-    padding: 30px 0;
-    
-    
-}
-
-.rung-modal {
+#howToPlayModalBody {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 0px 0;
-    border-bottom: 0.2rem solid hwb(267 7% 88%);
-    background:  #477f54 ; /* Correct word color (green) */
-    position: relative;
-
+    padding: 0 5px;
 }
 
-
-.rung-modal:last-child {
-    border-top: 5px solid hwb(267 7% 88%);
+#howToPlayHistorySection {
+    padding-bottom: 5px;
+    text-align: left;
 }
-.word-correct {
+
+.howToPlayBodySectionHeader{
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding-bottom: 5px;
+    text-align: left;
+}
+
+.howToPlayExampleSentence {
+    padding: 0 5px 5px;
+    font-size: 1rem;
+}
+
+.howToPlaySentenceBlock {
+    padding: 0 5px 5px;
+    text-align: left;
+}
+
+/* Example Tiles */
+.howToPlayExampleGameRow {
     display: flex;
     justify-content: center;
+    margin: 10px 0;
+}
+
+.howToPlayExampleTile {
+    width: 6vw;
+    height: 6vw;
+    display: flex;
+    max-width: 60px;
+    max-height: 60px;
+    justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 30px;
-    background:  #477f54; /* Correct word color (green) */
-    color: white;
+    font-size: 3vw;
     font-weight: bold;
-    border-radius: 5px;
-    border: 2px solid  #477f54;
-    margin-top: 5px;
-    font-size: clamp(0.8rem, calc(3vw + 0.1rem), 1.1rem );
-}
-
-.rung-explanation {
-    font-size: clamp(0.6rem, calc(3vw + 0.1rem), 0.8rem );
-    color: white;
-    margin-bottom: 5px;
-    text-align: center;
-}
-
-/* Position the left line */
-.ladder-modal::before {
-    left: calc(50% - 70px); /* Adjust based on rung width */
-}
-
-/* Position the right line */
-.ladder-modal::after {
-    right: calc(50% - 70px); /* Adjust based on rung width */
-}
-
-/* Default Modal Styling (Base for All Screens) */
-#how-to-play-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #201a24;
-    color: #333;
-    padding: 2em;
-    width: 80%;
-    height: 80%;    
-    max-width: 600px; /* Limit width for large screens 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
-    border-radius: 10px;
-    z-index: 1000;
-    overflow-y: auto;
-    max-height: 100dvh; /* Limit modal height to 80% of the viewport */
-    font-size: clamp(0.9em, 1.5vw, 1.2em); 
-
+    text-transform: uppercase;
+    border: 2px solid #d3d3d3; /* Added full border */
+    background-color: white;
+    border-radius: 0%;   
 }
 
 
-
-/* Small Phones (e.g., iPhone SE, Galaxy A01) */
-@media (max-width: 320px) {
-    #how-to-play-modal {
-        width: 90%; /* Use most of the screen width */
-        padding: 1em; /* Reduce padding */
-        font-size: 0.8em; /* Smaller font size */
-        height: 90%;
-    }
-
-    #how-to-play-modal h2 {
-        font-size: 1.1em; /* Smaller heading */
-    }
-    #how-to-play-modal h3 {
-        font-size: 0.9em; /* Bigger heading for better focus */
-    }
-    #how-to-play-modal ul {
-        font-size: 0.7em; /* Bigger heading for better focus */
-    }
-    .word-correct {
-        font-size: 0.7em;
-    }
-    .rung-explanation {
-        font-size: 0.7em;
-    }
-}
-
-/* Medium Phones (e.g., iPhone 8, Galaxy S9) */
-@media (min-width: 321px) and (max-width: 375px) {
-    #how-to-play-modal {
-        width: 85%; /* Slightly wider */
-        padding: 1.5em;
-        font-size: 0.8em;
-        height: 90%;
-    }
-    #how-to-play-modal h2 {
-        font-size: 1.1em; /* Smaller heading */
-    }
-    #how-to-play-modal h3 {
-        font-size: 1em; /* Bigger heading for better focus */
-    }
-    #how-to-play-modal ul {
-        font-size: 0.8em; /* Bigger heading for better focus */
-    }
-    .word-correct {
-        font-size: 0.8em;
-    }
-    .rung-explanation {
-        font-size: 0.8em;
-    }
-   
-}
-
-/* Large Phones (e.g., iPhone 12, Galaxy S20) */
-@media (min-width: 376px) and (max-width: 414px) {
-    #how-to-play-modal {
-        width: 85%; /* Balanced width */
-        padding: 2em; /* Standard padding */
-        font-size: 0.9em; /* Default font size */
-        height: 80%;
-    }
-
-    #how-to-play-modal h2 {
-        font-size: 1.3em; /* Smaller heading */
-    }
-    #how-to-play-modal h3 {
-        font-size: 1em; /* Bigger heading for better focus */
-    }
-    #how-to-play-modal ul {
-        font-size: 0.9em; /* Bigger heading for better focus */
-    }
-    .word-correct {
-        font-size: 0.9em;
-    }
-    .rung-explanation {
-        font-size: 0.9em;
-    }
-}
-
-/* Extra-Large Phones (e.g., iPhone 14 Pro Max, Galaxy Note Series) */
-@media (min-width: 415px) and (max-width: 480px) {
-    #how-to-play-modal {
-        width: 85%; /* More compact width */
-        padding: 2em;
-        font-size: 1em;
-        height: 80%;
-    }
-
-    #how-to-play-modal h2 {
-        font-size: 1.2em; /* Smaller heading */
-    }
-    #how-to-play-modal h3 {
-        font-size: 1em; /* Bigger heading for better focus */
-    }
-    #how-to-play-modal ul {
-        font-size: 0.9em; /* Bigger heading for better focus */
-    }
-    .word-correct {
-        font-size: 0.9em;
-    }
-    .rung-explanation {
-        font-size: 0.9em;
-    }
-}
+/* Responsive Media Queries */
 
 
+/* Small Phones (320px - 375px) */
+@media (max-width: 375px) {
 
-/* Medium Screens (Tablets) */
-@media (min-width: 481px) and (max-width: 768px) {
-    #how-to-play-modal {
-        width: 80%; /* Wider for tablets */
-        height: 90%;
-        padding: 2em;
-        font-size: 0.9em; /* Default font size */
-    }
+    .reset-icon {
+        width: 30px;
+        height: 30px;
+    }    
 
-    #how-to-play-modal h2 {
-        font-size: 1.2em; /* Larger heading for better readability */
-    }
-    #how-to-play-modal h3 {
-        font-size: 1em; /* Bigger heading for better focus */
-    }
-    #how-to-play-modal ul {
-        font-size: 0.9em; /* Bigger heading for better focus */
-    }
-    .word-correct {
-        font-size: 0.9em;
-    }
-    .rung-explanation {
-        font-size: 0.9em;
-    }
-}
-
-/* Tablets (Portrait and Landscape: 768px to 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
-    #how-to-play-modal {
-        width: 70%; /* Slightly narrower modal */
-        padding: 1.5em 2em; /* Increase padding */
-        font-size: 1.1em; /* Larger text for readability */
-        max-width: 700px; /* Expand width limit for larger tablets */
-        height: 95%;
+    .reset-icon::before {
         
+        top: -5px;
+        left: 11px;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
     }
-    #how-to-play-modal h2 {
-        font-size: 1.2em; /* Larger heading for better readability */
+
+    #guess-grid{
+        max-height: 30vh;
     }
-    #how-to-play-modal h3 {
-        font-size: 1em; /* Bigger heading for better focus */
+    .tile {
+        width: 12vw;
+        height: 12vw;
+        font-size: 7vw;
     }
-    #how-to-play-modal ul {
-        font-size: 0.9em; /* Bigger heading for better focus */
+
+    .key{
+        width: 8.5vw;
+        height: 16vw;
+        font-size: 5vw;
     }
-    .word-correct {
-        font-size: 0.9em;
+
+    #enter-key, #backspace-key {
+        width: 12vw;
+        height: 16vw;
     }
-    .rung-explanation {
-        font-size: 0.9em;
+    #enter-key{
+        font-size: 2.5vw;
+    }
+    #backspace-key{
+        font-size: 4.5vw;
+    }
+
+    .modalTitle{
+        font-size : 7vw;
+    }
+
+    .modal-content {
+        margin: 5% auto; /* Reduce top margin for smaller screens */
+        padding: 15px;
+        font-size: 14px; /* Slightly smaller text for smaller screens */
+    }
+
+    .howToPlayExampleSentence {
+        font-size : 14px;
+    }
+    .howToPlayBodySectionHeader {
+        font-size: 20px;
+    }
+    .howToPlayExampleTile {
+        width: 10vw;
+        height: 10vw;
+        font-size: 5vw;
     }
 }
 
-/* Small Desktops (1025px to 1440px) */
-@media (min-width: 1025px) and (max-width: 1440px) {
-    #how-to-play-modal {
-        width: 60%; /* Narrower width for better focus */
-        padding: 2em 2.5em; /* Spacious padding */
-        font-size: 1.1em; /* Slightly larger font size */
-        max-width: 700px; /* Expand max width */
-        height: 90%;
+
+/* Medium Phones (376px - 480px) */
+@media (min-width: 376px) and (max-width: 480px) {
+
+   
+    #guess-grid{
+        max-height: 30vh;
     }
-    #how-to-play-modal h2 {
-        font-size: 1.1em; /* Larger heading for better readability */
+    .tile {
+        width: 10vw;
+        height: 10vw;
+        font-size: 7vw;
     }
-    #how-to-play-modal h3 {
-        font-size: 0.9em; /* Bigger heading for better focus */
+
+    .key{
+        width: 8.5vw;
+        height: 16vw;
+        font-size: 5vw;
     }
-    #how-to-play-modal ul {
-        font-size: 0.8em; /* Bigger heading for better focus */
+
+    #enter-key, #backspace-key {
+        width: 12vw;
+        height: 16vw;
     }
-    .word-correct {
-        font-size: 0.8em;
+    #enter-key{
+        font-size: 2.5vw;
     }
-    .rung-explanation {
-        font-size: 0.8em;
+    #backspace-key{
+        font-size: 4.5vw;
+    }
+
+    .modalTitle{
+        font-size : 7vw;
+    }
+
+    .modal-content {
+        margin: 5% auto; /* Reduce top margin for smaller screens */
+        padding: 15px;
+        font-size: 14px; /* Slightly smaller text for smaller screens */
+    }
+
+    .howToPlayExampleSentence {
+        font-size : 16px;
+    }
+    .howToPlayBodySectionHeader {
+        font-size: 22px;
+    }
+    .howToPlayExampleTile {
+        width: 10vw;
+        height: 10vw;
+        font-size: 5vw;
     }
 }
 
-/* Large Desktops and Widescreens (1441px and above) */
-@media (min-width: 1441px) {
-    #how-to-play-modal {
-        width: 50%; /* More compact width for very large screens */
-        padding: 2em 2.5em; /* Generous padding */
-        font-size: 1.2em; /* Larger font size */
-        max-width: 900px; /* Further expand max width */
-        height: 90%;
+/* Large Phones (481px - 600px) */
+@media (min-width: 481px) and (max-width: 600px) {
+       
+    #guess-grid{
+        max-height: 30vh;
     }
-    #how-to-play-modal h2 {
-        font-size: 1.1em; /* Larger heading for better readability */
+    .tile {
+        width: 8vw;
+        height: 8vw;
+        font-size: 5vw;
     }
-    #how-to-play-modal h3 {
-        font-size: 0.9em; /* Bigger heading for better focus */
+
+    .key{
+        width: 8.5vw;
+        height: 16vw;
+        font-size: 3.5vw;
     }
-    #how-to-play-modal ul {
-        font-size: 0.8em; /* Bigger heading for better focus */
+
+    #enter-key, #backspace-key {
+        width: 12vw;
+        height: 16vw;
     }
-    .word-correct {
-        font-size: 0.8em;
+    #enter-key{
+        font-size: 2.5vw;
     }
-    .rung-explanation {
-        font-size: 0.8em;
+    #backspace-key{
+        font-size: 4vw;
+    }
+
+    .modalTitle{
+        font-size : 7vw;
+    }
+
+    .modal-content {
+        margin: 5% auto; /* Reduce top margin for smaller screens */
+        padding: 15px;
+        font-size: 14px; /* Slightly smaller text for smaller screens */
+    }
+
+    .howToPlayExampleSentence {
+        font-size : 16px;
+    }
+    .howToPlayBodySectionHeader {
+        font-size: 22px;
+    }
+    .howToPlayExampleTile {
+        width: 10vw;
+        height: 10vw;
+        font-size: 5vw;
     }
 }
+
+/* Small Tablets (601px - 767px) */
+@media (min-width: 601px) and (max-width: 767px) {
+
+    #guess-grid{
+        max-height: 30vh;
+    }
+    .tile {
+        width: 7vw;
+        height: 7vw;
+        font-size: 4vw;
+    }
+
+    .key{
+        width: 12vw;
+        height: 20vw;
+        font-size: 3vw;
+    }
+
+    #enter-key, #backspace-key {
+        width: 12vw;
+        height: 16vw;
+    }
+    #enter-key{
+        font-size: 2vw;
+    }
+    #backspace-key{
+        font-size: 4vw;
+    }
+
+}
+
+/* Standard Tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .gameHeader{
+        padding: 10px;
+        font-size: 2rem;
+    }
+
+    #guess-grid{
+        max-height: 30vh;
+    }
+    .tile {
+        width: 6vw;
+        height: 6vw;
+        font-size: 3.5vw;
+    }
+
+    .key{
+        width: 12vw;
+        height: 20vw;
+        font-size: 2vw;
+    }
+
+    #enter-key, #backspace-key {
+        width: 12vw;
+        height: 16vw;
+    }
+    #enter-key{
+        font-size: 1.5vw;
+    }
+    #backspace-key{
+        font-size: 2.5vw;
+    }
+
+    .modalTitle{
+        font-size : 7vw;
+    }
+
+    .modal-content {
+        margin: 5% auto; /* Reduce top margin for smaller screens */
+        padding: 15px;
+        font-size: 3vw; /* Slightly smaller text for smaller screens */
+    }
+
+    .howToPlayExampleSentence {
+        font-size : 3vw;
+    }
+    .howToPlayBodySectionHeader {
+        font-size: 3vw;
+    }
+    .howToPlayExampleTile {
+        width: 5vw;
+        height: 5vw;
+        font-size: 3vw;
+    }
+}
+
+/* Tablets/Large Devices (1024px - 1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+
+
+    .gameHeader{
+        padding: 10px;
+        font-size: 2rem;
+    }
+
+    #guess-grid{
+        max-height: 30vh;
+    }
+    .tile {
+        width: 5vw;
+        height: 5vw;
+        font-size: 3vw;
+    }
+
+    .key{
+        width: 16vw;
+        height: 24vw;
+        font-size: 3vw;
+        max-width: 60px;
+        max-height: 100px;
+        border-radius: 2%;
+    }
+
+    #enter-key, #backspace-key {
+        width: 20vw;
+        height: 24vw;
+        max-width: 60px;
+        max-height: 100px;
+    }
+    #enter-key{
+        font-size: 2vw;
+    }
+    #backspace-key{
+        font-size: 3vw;
+    }
+    .modalTitle{
+        font-size : 6vw;
+    }
+
+    .modal-content {
+        margin: 5% auto; /* Reduce top margin for smaller screens */
+        padding: 15px;
+        font-size: 3vw; /* Slightly smaller text for smaller screens */
+    }
+
+    .howToPlayExampleSentence {
+        font-size : 3vw;
+    }
+    .howToPlayBodySectionHeader {
+        font-size: 3vw;
+    }
+    .howToPlayExampleTile {
+        width: 5vw;
+        height: 5vw;
+        font-size: 3vw;
+    }
+}
+
+/* Large Screens (1440px and above) */
+@media (min-width: 1440px) {
+
+    .gameHeader{
+        padding: 10px;
+        font-size: 2rem;
+    }
+
+    #guess-grid{
+        max-height: 30vh;
+    }
+    .tile {
+        width: 3vw;
+        height: 3vw;
+        font-size: 1.5vw;
+    }
+
+    .key{
+        width: 12vw;
+        height: 20vw;
+        font-size: 1vw;
+    }
+
+    #enter-key, #backspace-key {
+        width: 12vw;
+        height: 16vw;
+    }
+    #enter-key{
+        font-size: 1vw;
+    }
+    #backspace-key{
+        font-size: 1vw;
+    }
+}
+
+

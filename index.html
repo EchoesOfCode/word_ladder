@@ -1,97 +1,147 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Ladder Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Worder - daily word ladder game</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <!-- Import Cursed Timer ULiL Font -->
+    <link href="https://fonts.cdnfonts.com/css/cursed-timer-ulil" rel="stylesheet">
 
 </head>
 <body>
-    <header>
-        <h1>Word Ladder Game</h1>
-        <p>Start at the bottom (HEAD) and climb to the top (TAIL)!</p>
-    </header>
-
-    <div id="hearts-container" class="hearts">
-        <!-- Hearts will be dynamically added here -->
-    </div>
-    
-    <main>
-        <!-- Ladder Container -->
-        <div class="ladder-background">
-            <div class="rung" id="rung-6">HEAD</div>
-            <div class="rung" id="rung-2"></div>
-            <div class="rung" id="rung-3"></div>
-            <div class="rung" id="rung-4"></div>
-            <div class="rung" id="rung-5"></div>
-            <div class="rung" id="rung-1">
-                TAIL
-                <!--<input type="text" id="next-word" placeholder="Enter your next word">
-                <button onclick="submitWord()">Submit</button>-->
+    <div class="game-container">
+        <div class ="gameHeader">
+            <div class ="gameHeaderLeftGroup">
+                <button id="how-to-play-btn" title="How to Play"></button>
             </div>
-        </div>
-      
-        <!-- How to Play Modal -->
-        <div id="how-to-play-modal" class="modal">
-            <div class="modal-content">
-                <span id="close-how-to-play" class="close-button">&times;</span>
-                <h2>How To Play this game</h2>
-                <h3>Climb the word ladder in 5 tries.</h3>
-                <ul>
-                    <li>Each guess must be a valid <strong>4-letter word</strong>.</li>
-                    <li>You can only change <strong>one letter</strong> from the previous word.</li>
-                    <li>Correct words will move you up the ladder until you reach the final word.</li>
-                </ul>
+            <div class ="gameHeaderTitle">W O R D E R</div>
+            <div class ="gameHeaderRightGroup">
+                <button id="reset-button" title="Reset Game">
+                    <div class="reset-icon"></div>
+                </button>
+            </div>
 
-                <h3>Example</h3>
-                <!-- Ladder Representation -->
-                <div class="ladder-modal">
-                    <div class="rung-modal">
-                        <div class="word-correct">TAIL</div>
-                        <div class="rung-explanation">Reached the final word.</div>
+        </div>
+        <div class = "game">
+            <div id="grid-container">
+                <div id="start-row-wrapper">
+                    <div id="best-guess-counter"></div>
+                    <div class="word-row" id="start-word"></div>
+                    <div id="guess-counter">0</div>
+                </div>
+                <div id="guess-grid"></div>
+                <div class="word-row" id="end-word"></div>
+            </div>
+            <div class="keyboard">
+                <div class="key-row">
+                <button class="key">Q</button>
+                <button class="key">W</button>
+                <button class="key">E</button>
+                <button class="key">R</button>
+                <button class="key">T</button>
+                <button class="key">Y</button>
+                <button class="key">U</button>
+                <button class="key">I</button>
+                <button class="key">O</button>
+                <button class="key">P</button>
+                </div>
+                <div class="key-row">
+                <button class="key">A</button>
+                <button class="key">S</button>
+                <button class="key">D</button>
+                <button class="key">F</button>
+                <button class="key">G</button>
+                <button class="key">H</button>
+                <button class="key">J</button>
+                <button class="key">K</button>
+                <button class="key">L</button>
+                </div>
+                <div class="key-row">
+                <button id="enter-key" onclick="submitWord()">ENTER</button>
+                <button class="key">Z</button>
+                <button class="key">X</button>
+                <button class="key">C</button>
+                <button class="key">V</button>
+                <button class="key">B</button>
+                <button class="key">N</button>
+                <button class="key">M</button>
+                <button id="backspace-key">⌫</button>
+                </div>
+            </div>
+            <div id="congrats-popup" class="popup-overlay">
+                <div class="popup-content">
+                    <span id="popup-close">&times;</span>
+                    <div class="popup-header">
+                        <div class="popup-icon">⭐</div>
+                        <h2>Congratulations!</h2>
                     </div>
-                    <div class="rung-modal">
-                        <div class="word-correct">TALL</div>
-                        <div class="rung-explanation">Change the letter <strong>I</strong> to <strong>L</strong>.</div>
+                    <button id="whatsapp-share-btn">Share on WhatsApp</button>
+                    <button id="play-again-btn">Play Again</button>
+                </div>
+            </div>  
+            <!-- How to Play Modal -->
+             <div class="overlayContent">
+                <div id="how-to-play-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modalHeaderRow">
+                        <div class="dummyLeftItem"></div>
+                        <div class="modalTitle">How To Play</div>
+                        <span id="close-modal-btn" class="close-btn">&times;</span>
                     </div>
-                    <div class="rung-modal">
-                        <div class="word-correct">TELL</div>
-                        <div class="rung-explanation">Change the letter <strong>A</strong> to <strong>E</strong>.</div>
-                    </div>
-                    <div class="rung-modal">
-                        <div class="word-correct">TEAL</div>
-                        <div class="rung-explanation">Change the letter <strong>L</strong> to <strong>A</strong>.</div>
-                    </div>
-                    <div class="rung-modal">
-                        <div class="word-correct">HEAL</div>
-                        <div class="rung-explanation">Start at the bottom word: <strong>HEAD</strong>.</div>
+                    <div class="modal-body">
+                        <div id="howToPlayModalBody">
+                           <!-- <div class="howToPlayHistorySection">This game is called a "word ladder" and was invented by Lewis Carroll in 1877.</div>-->
+                            <div class="howToPlayBodySectionHeader">Rules</div>
+                            <div class="howToPlaySentenceBlock">Make your way from the start word to the end word.</div>
+                            <div class="howToPlaySentenceBlock">Each word you enter <strong>can only change 1 letter</strong> from the word above it.</div>
+                            <div id="howToPlayExampleSection">
+                                <div class="howToPlayBodySectionHeader">Example</div> 
+                                    <div class="howToPlayExampleGameRow">
+                                        <div class="howToPlayExampleTile tile filled">E</div>
+                                        <div class="howToPlayExampleTile tile filled">A</div>
+                                        <div class="howToPlayExampleTile tile filled">S</div>
+                                        <div class="howToPlayExampleTile tile filled">T</div>
+                                    </div>
+                                    <div class="howToPlayExampleSentence"><strong>EAST</strong> start word, <strong>WEST</strong> end word</div>
+                                    <div class="howToPlayExampleGameRow">
+                                        <div class="howToPlayExampleTile tile changed-letter">V</div>
+                                        <div class="howToPlayExampleTile tile empty">A</div>
+                                        <div class="howToPlayExampleTile tile correct-letter">S</div>
+                                        <div class="howToPlayExampleTile tile correct-letter">T</div>
+                                    </div>
+                                    <div class="howToPlayExampleSentence">We changed <strong>E</strong> to <strong>V</strong> to make <strong>VAST</strong></div>
+                                    <div class="howToPlayExampleGameRow">
+                                        <div class="howToPlayExampleTile tile empty">V</div>
+                                        <div class="howToPlayExampleTile tile correct-letter tile changed-letter">E</div>
+                                        <div class="howToPlayExampleTile tile correct-letter">S</div>
+                                        <div class="howToPlayExampleTile tile correct-letter">T</div>
+                                    </div>
+                                    <div class="howToPlayExampleSentence">We changed <strong>A</strong> to <strong>E</strong> to make <strong>VEST</strong></div>
+                                    <div class="howToPlayExampleGameRow">
+                                        <div class="howToPlayExampleTile tile correct-letter tile changed-letter">W</div>
+                                        <div class="howToPlayExampleTile tile correct-letter">E</div>
+                                        <div class="howToPlayExampleTile tile correct-letter">S</div>
+                                        <div class="howToPlayExampleTile tile correct-letter">T</div>
+                                    </div>
+                                    <div class="howToPlayExampleSentence">We changed <strong>V</strong> to <strong>W</strong> to make <strong>WEST</strong></div>
+                                    <div class="howToPlayExampleGameRow">
+                                        <div class="howToPlayExampleTile tile filled">W</div>
+                                        <div class="howToPlayExampleTile tile filled">E</div>
+                                        <div class="howToPlayExampleTile tile filled">S</div>
+                                        <div class="howToPlayExampleTile tile filled">T</div>
+                                    </div> 
+                            </div>
+                            <div class="howToPlaySentenceBlock">And so on... until you reach the end word!</div>
+                        </div>
                     </div>
                 </div>
-
-                <!--<h3>Climb the ladder by guessing words correctly to reach the top!</h3>-->
-            </div>
-        </div>
-
-
-        <div id="game-modal" class="modal">
-            <div class="modal-content">
-                <p id="modal-message"></p>
-                <button id="whatsapp-share" class="whatsapp-button">Share on WhatsApp</button>
-            </div>
-        </div>
-
-
-        <!-- Feedback Section -->
-        <p id="message"></p>
-        <p>Steps Taken: <span id="step-count">0</span></p>
-
-    </main>
-    <footer>
-        <p>Enjoy climbing the word ladder!</p>
-    </footer>
+                </div>
+             </div>
+        </div>    
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
